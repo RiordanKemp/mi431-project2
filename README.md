@@ -33,12 +33,12 @@ N/A
 
 Did you get help from any AI Code Assistants?  (Tell us which .cs file to look in for the citation and describe what you learned; also be sure to comment in the .cs per the syllabus instructions)
 
-Prompted ChatGPT React with "How do I detect a key being held down (such as "A") with Unity's 2022 input system".  Didn't learn much but this was a useful reminder of the modern syntax, which I struggled to find good documentation for.
+Prompted ChatGPT React with "How do I detect a key being held down (such as "A") with Unity's 2022 input system".  Also prompted it with "How do I detect the position of a mouse in world space with the new input system".  All I learned from this is how to use old features using new syntax, but it's good to know.
 
 
 Did you get help from any additional online websites, videos, or tutorials?  (link them here)
 
-N/A
+Detect mouse left click in Unity's new input system: https://discussions.unity.com/t/mouse-clicks-not-detected-in-new-input-system/853008/3
 
 What trouble did you have with this project?
 
