@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
             velocityY += jumpHeight;
         }
 
-        rigid.velocity = new Vector2(hAxis * movementSpeed, velocityY);
-
+        float clampedX = Mathf.Clamp(hAxis * movementSpeed + rigid.velocity.x, -5f, 5f);
+        if (hAxis == 0) clampedX = Mathf.MoveTowards(clampedX, 0f, .1f);
+        rigid.velocity = new Vector2(clampedX, velocityY);
 
     }
 
