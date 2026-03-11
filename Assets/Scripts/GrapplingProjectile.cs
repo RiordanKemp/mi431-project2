@@ -26,6 +26,7 @@ public class GrapplingProjectile : MonoBehaviour
 
     void Update()
     {
+        // Projectile is moving towards the cursor target
         if (!returningToPlayer && !rooted)
         {
             transform.position = Vector3.MoveTowards(transform.position, _target, grappleSpeed * Time.deltaTime);
@@ -34,11 +35,11 @@ public class GrapplingProjectile : MonoBehaviour
             if (Mathf.Abs(transform.position.x - startingPos.x) > grappleRange || 
             Mathf.Abs(transform.position.y - startingPos.y) > grappleRange)
             {
-                returningToPlayer = true;
-                Collider2D collider = this.gameObject.GetComponent<Collider2D>();
-                collider.enabled = false;
+                ReturnToPlayer();
             }
         }
+
+        // Projectile is returning to the player
         else if (returningToPlayer)
         {
             transform.position = Vector3.MoveTowards(transform.position, playerGO.transform.position, returnSpeed * Time.deltaTime);
@@ -72,12 +73,12 @@ public class GrapplingProjectile : MonoBehaviour
 
         else if ((stopGrappleLayer.value & (1 << col.gameObject.layer)) != 0)
         {
-            returningToPlayer = true;    
+            ReturnToPlayer();
         }
 
         else if ((grabItemLayer.value & (1 << col.gameObject.layer)) != 0)
         {
-            returningToPlayer = true; 
+            ReturnToPlayer();
             col.gameObject.transform.parent = this.transform;   
         }
     }
@@ -86,7 +87,7 @@ public class GrapplingProjectile : MonoBehaviour
     public void ResetRoot()
     {
         rooted = false;
-        returningToPlayer = true;
+        ReturnToPlayer();
         // effects reset
     }
 
@@ -95,6 +96,13 @@ public class GrapplingProjectile : MonoBehaviour
     {
         _target = target;
         playerGO = player;
+    }
+
+    void ReturnToPlayer()
+    {
+        returningToPlayer = true;
+        Collider2D collider = this.gameObject.GetComponent<Collider2D>();
+        collider.enabled = false;
     }
 
 }
