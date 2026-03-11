@@ -1,10 +1,10 @@
 # mi431-project2
 
-Research Phase Project 2 - ReadMe File
+Creative Phase Project 2 - ReadMe File
 
 Author: Riordan Kemp
 
-Modified: 2025-02-19
+Modified: 2025-03-11
 
 What was/were your starting tutorial(s)?
 
@@ -18,7 +18,7 @@ I set up a basic 2D movement system and environment, and implemented the grappli
 
 What did you do in your Creative Phase?
 
-N/A
+I added a physical grappling hook projectile, allowed the player to control their distance from the grapple point, and made momentum a factor in the rotation speed.
 
 
 Any assets used that you didn't create yourself?  (art, music, etc. Just tell us where you got it, link it here) 
@@ -38,7 +38,11 @@ Prompted ChatGPT React with "How do I detect a key being held down (such as "A")
 
 Did you get help from any additional online websites, videos, or tutorials?  (link them here)
 
+RESEARCH -
 Detect mouse left click in Unity's new input system: https://discussions.unity.com/t/mouse-clicks-not-detected-in-new-input-system/853008/3
+
+CREATIVE -
+How to instantiate an object with zero rotation: https://discussions.unity.com/t/quaternion-no-rotation/399822/2
 
 What trouble did you have with this project?
 

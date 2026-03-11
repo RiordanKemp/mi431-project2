@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 public class GrapplingHook : MonoBehaviour
 {
     [Header("Inscribed")]
+    [SerializeField] private GameObject hookProjectile;
     [SerializeField] private float grappleLength;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private LineRenderer rope;
 
+    [Header("Dynamic")]
+    [SerializeField] private GameObject grappleProjectile = null;
     private Vector3 grapplePoint;
     private DistanceJoint2D joint;
 
@@ -24,27 +27,22 @@ public class GrapplingHook : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+            TryToGrapple();
+            
+            // RaycastHit2D hit = Physics2D.Raycast(
+            //     origin: worldPos,
+            //     direction: Vector2.zero,
+            //     distance: Mathf.Infinity,
+            //     layerMask: grappleLayer
+            // );
 
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-            worldPos.z = 0f;
+            // if (hit.collider != null)
+            // {
+            //     ActivateGrapple();
+            // }
 
-            RaycastHit2D hit = Physics2D.Raycast(
-                origin: worldPos,
-                direction: Vector2.zero,
-                distance: Mathf.Infinity,
-                layerMask: grappleLayer
-            );
 
-            if (hit.collider != null)
-            {
-                grapplePoint = hit.point;
-                grapplePoint.z = 0;
-                joint.connectedAnchor = grapplePoint;
-                joint.enabled = true;
-                joint.distance = grappleLength;
-                rope.enabled = true;
-            }
+
         }
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
@@ -57,6 +55,32 @@ public class GrapplingHook : MonoBehaviour
         {
             rope.SetPosition(0, grapplePoint);
             rope.SetPosition(1, transform.position);
+        }
+
+        void TryToGrapple()
+        {
+            if (grappleProjectile != null) return;
+
+            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            worldPos.z = 0f;
+
+            grappleProjectile = Instantiate(hookProjectile, transform.position, Quaternion.identity);
+            GrapplingProjectile GP = grappleProjectile.GetComponent<GrapplingProjectile>();
+            GP.SetTarget(target: worldPos, player: this.gameObject);
+
+        }
+
+        void ActivateGrapple()
+        {
+            // grapplePoint = hit.point;
+            // grapplePoint.z = 0;
+            // joint.connectedAnchor = grapplePoint;
+            // joint.enabled = true;
+            // joint.distance = grappleLength;
+            // rope.enabled = true;
+            // grappleActive = true;
         }
     }
 }

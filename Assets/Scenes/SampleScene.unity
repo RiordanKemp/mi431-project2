@@ -956,11 +956,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946b8a2e4df2cd14d99c8dc79194ceec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hookProjectile: {fileID: 5236833626771947708, guid: 4e11063ae5ae3fb4db00dcb0f1ece468, type: 3}
   grappleLength: 2
   grappleLayer:
     serializedVersion: 2
     m_Bits: 128
   rope: {fileID: 179120324}
+  grappleActive: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
