@@ -46,9 +46,29 @@ public class GrapplingHook : MonoBehaviour
             rope.SetPosition(1, transform.position);
         }
 
-        if (gpScript != null && gpScript.Rooted && !joint.enabled)
+
+        if (gpScript != null && gpScript.Rooted)
         {
-            ActivateGrapple();
+            if (!joint.enabled)
+            {
+                ActivateGrapple();
+            }
+            
+            float scroll = Mouse.current.scroll.ReadValue().y;
+
+            // Scroll down - shorten the hook
+            if (scroll < 0)
+            {
+                joint.distance -= 3f * Time.deltaTime;
+            }
+
+            // Scroll up - lengthen the hook
+            if (scroll > 0)
+            {
+                joint.distance += 3f * Time.deltaTime;
+            }
+
+            joint.distance = Mathf.Clamp(joint.distance, grappleLength / 1.5f, grappleLength * 1.5f);
         }
 
         void TryToGrapple()
