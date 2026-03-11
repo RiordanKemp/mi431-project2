@@ -8,11 +8,15 @@ public class GrapplingProjectile : MonoBehaviour
     [SerializeField] private float grappleSpeed = 5;
     [SerializeField] private float returnSpeed = 15;
     [SerializeField] private float grappleRange = 4;
+    [SerializeField] private LayerMask grappleLayer;
+    [SerializeField] private LayerMask stopGrappleLayer;
     [Header("Dynamic")]
     [SerializeField] private Vector3 _target = Vector3.zero;
     [SerializeField] private GameObject playerGO;
-    [SerializeField] private bool returningToPlayer = false;
+    [SerializeField] public bool returningToPlayer = false;
     [SerializeField] private Vector3 startingPos;
+    [SerializeField] private bool rooted = false;
+    public bool Rooted => rooted;
 
     void Start()
     {
@@ -21,33 +25,61 @@ public class GrapplingProjectile : MonoBehaviour
 
     void Update()
     {
-        if (!returningToPlayer)
+        if (!returningToPlayer && !rooted)
         {
             transform.position = Vector3.MoveTowards(transform.position, _target, grappleSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
-            if (Mathf.Abs(transform.position.x + transform.position.y - startingPos.x - startingPos.y) > grappleRange)
+            if (Mathf.Abs(transform.position.x - startingPos.x) > grappleRange || 
+            Mathf.Abs(transform.position.y - startingPos.y) > grappleRange)
             {
                 returningToPlayer = true;
                 Collider2D collider = this.gameObject.GetComponent<Collider2D>();
                 collider.enabled = false;
             }
         }
-        else
+        else if (returningToPlayer)
         {
             transform.position = Vector3.MoveTowards(transform.position, playerGO.transform.position, returnSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
-            if (Mathf.Abs(transform.position.x + transform.position.y - playerGO.transform.position.x - playerGO.transform.position.y) < 3)
+            if (Mathf.Abs(transform.position.x - playerGO.transform.position.x) < 0.05f && Mathf.Abs(transform.position.y - playerGO.transform.position.y) < 0.05f )
             {
-                ResetGrapple();
+                Destroy(this.gameObject);
             }
         }
 
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void LateUpdate()
     {
-        
+        if (transform.position == _target)
+        {
+            returningToPlayer = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
+        if ((grappleLayer.value & (1 << col.gameObject.layer)) != 0)
+        {
+            rooted = true;
+        }
+
+        else if ((stopGrappleLayer.value & (1 << col.gameObject.layer)) != 0)
+        {
+            returningToPlayer = true;    
+        }
+    }
+
+
+    public void ResetRoot()
+    {
+        rooted = false;
+        returningToPlayer = true;
+        // effects reset
     }
 
     
@@ -57,8 +89,4 @@ public class GrapplingProjectile : MonoBehaviour
         playerGO = player;
     }
 
-    void ResetGrapple()
-    {
-        Destroy(this.gameObject);
-    }
 }

@@ -33,8 +33,13 @@ N/A
 
 Did you get help from any AI Code Assistants?  (Tell us which .cs file to look in for the citation and describe what you learned; also be sure to comment in the .cs per the syllabus instructions)
 
+RESEARCH -
 Prompted ChatGPT React with "How do I detect a key being held down (such as "A") with Unity's 2022 input system".  Also prompted it with "How do I detect the position of a mouse in world space with the new input system".  All I learned from this is how to use old features using new syntax, but it's good to know.
 
+CREATIVE -
+Prompted ChatGPT with "How would I detect whether a collider of OnTriggerEnter2D has a layer which matches a layer mask in Unity?".  
+
+Prompted ChatGPT with "How can I track the direction of the mouse scroll wheel using Unity's new input system?".  Similar to the research phase - I've implemented the scroll wheel detection into previous projects, but I can't find updated syntax for the new input system.
 
 Did you get help from any additional online websites, videos, or tutorials?  (link them here)
 
@@ -43,6 +48,7 @@ Detect mouse left click in Unity's new input system: https://discussions.unity.c
 
 CREATIVE -
 How to instantiate an object with zero rotation: https://discussions.unity.com/t/quaternion-no-rotation/399822/2
+Using Vector3 MoveTowards: 
 
 What trouble did you have with this project?
 
