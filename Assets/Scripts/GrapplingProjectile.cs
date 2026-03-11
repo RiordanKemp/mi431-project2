@@ -56,9 +56,9 @@ public class GrapplingProjectile : MonoBehaviour
 
     void LateUpdate()
     {
-        if (transform.position == _target)
+        if (transform.position == _target && !returningToPlayer)
         {
-            returningToPlayer = true;
+            ReturnToPlayer();
         }
     }
 
