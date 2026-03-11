@@ -18,7 +18,7 @@ I set up a basic 2D movement system and environment, and implemented the grappli
 
 What did you do in your Creative Phase?
 
-I added a physical grappling hook projectile, allowed the player to control their distance from the grapple point, and made momentum a factor in the rotation speed.
+I added a physical grappling hook projectile which can bounce off chosen layers, grapple onto selected layers, and has a customizable travel distance, speed, and a return effect.  I also allowed the player to control their distance from the grapple point, and allowed the grappling hook to retrieve items
 
 
 Any assets used that you didn't create yourself?  (art, music, etc. Just tell us where you got it, link it here) 
@@ -48,11 +48,12 @@ Detect mouse left click in Unity's new input system: https://discussions.unity.c
 
 CREATIVE -
 How to instantiate an object with zero rotation: https://discussions.unity.com/t/quaternion-no-rotation/399822/2
-Using Vector3 MoveTowards: 
+Using Vector3 MoveTowards: https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Vector3.MoveTowards.html
+Change object parent: https://discussions.unity.com/t/changing-the-parent-of-an-object-in-a-script/31685
 
 What trouble did you have with this project?
 
-Text
+The physical grappling hook projectile was a pain to test - getting it to properly return when desired, ignore input at the right times, and implementing a range limit with the various layer collision checks was  surprisingly challenging.
 
 
 Is there anything else we should know?

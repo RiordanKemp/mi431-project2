@@ -10,6 +10,7 @@ public class GrapplingProjectile : MonoBehaviour
     [SerializeField] private float grappleRange = 4;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private LayerMask stopGrappleLayer;
+    [SerializeField] private LayerMask grabItemLayer;
     [Header("Dynamic")]
     [SerializeField] private Vector3 _target = Vector3.zero;
     [SerializeField] private GameObject playerGO;
@@ -71,6 +72,12 @@ public class GrapplingProjectile : MonoBehaviour
         else if ((stopGrappleLayer.value & (1 << col.gameObject.layer)) != 0)
         {
             returningToPlayer = true;    
+        }
+
+        else if ((grabItemLayer.value & (1 << col.gameObject.layer)) != 0)
+        {
+            returningToPlayer = true; 
+            col.gameObject.transform.parent = this.transform;   
         }
     }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5236833626771947708
+--- !u!1 &3478497291187857029
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7307801734446416670}
-  - component: {fileID: 3020090998970377378}
-  - component: {fileID: -8585930249194800458}
-  - component: {fileID: 4046983990207268535}
-  - component: {fileID: 1874438208262632030}
-  m_Layer: 8
-  m_Name: GrappleProjectile
+  - component: {fileID: 7117955344391371991}
+  - component: {fileID: 6168282771238120775}
+  - component: {fileID: 9045313006514505699}
+  - component: {fileID: 8705098414175958336}
+  m_Layer: 10
+  m_Name: Grabbable Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7307801734446416670
+--- !u!4 &7117955344391371991
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236833626771947708}
+  m_GameObject: {fileID: 3478497291187857029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7209, y: -3.0329, z: 0}
-  m_LocalScale: {x: 0.4554, y: 0.4554, z: 0.4554}
+  m_LocalPosition: {x: 6.74, y: -3.5, z: 0}
+  m_LocalScale: {x: 0.661, y: 1.3148, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3020090998970377378
+--- !u!212 &6168282771238120775
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236833626771947708}
+  m_GameObject: {fileID: 3478497291187857029}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.7106918, g: 0.7106918, b: 0.7106918, a: 1}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Color: {r: 0, g: 0.99371064, b: 0.018804267, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,42 +86,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8585930249194800458
+--- !u!114 &9045313006514505699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236833626771947708}
+  m_GameObject: {fileID: 3478497291187857029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a28614d4cb166154b9a64f1c15978402, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b303c28db9f1244eb66e38bd40f48c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappleSpeed: 10
-  returnSpeed: 20
-  grappleRange: 6
-  grappleLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  stopGrappleLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  grabItemLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  _target: {x: 0, y: 0, z: 0}
-  playerGO: {fileID: 0}
-  returningToPlayer: 0
-  startingPos: {x: 0, y: 0, z: 0}
-  rooted: 0
---- !u!58 &4046983990207268535
-CircleCollider2D:
+  grabParticles: {fileID: 5620921164655606712, guid: ae4f08536b624f54eb7b6a0de4af8126, type: 3}
+--- !u!70 &8705098414175958336
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236833626771947708}
+  m_GameObject: {fileID: 3478497291187857029}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -148,33 +131,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!50 &1874438208262632030
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236833626771947708}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Offset: {x: 0, y: 0.21133333}
+  m_Size: {x: 0.99999994, y: 1}
+  m_Direction: 0
