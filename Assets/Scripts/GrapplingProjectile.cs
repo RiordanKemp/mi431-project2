@@ -63,6 +63,7 @@ public class GrapplingProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (returningToPlayer || rooted) return;
 
         if ((grappleLayer.value & (1 << col.gameObject.layer)) != 0)
         {
